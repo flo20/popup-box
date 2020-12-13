@@ -1,18 +1,17 @@
-import React from "react";
+import React, { Fragment } from "react";
 
-const Message = () => {
+const Message = ({ datab }) => {
   return (
-    <div>
-      <div >
-        <h3 >Apply for Usag</h3>
-        <p style={{ width: "250px", textAlign: "center" }}>
-          The ultimate resource to prepare for coding interviews. Everything you
-          need, in one streamlined platform. The ultimate resource to prepare
-          for coding interviews. Everything you need, in one streamlined
-          platform.
-        </p>
+    <Fragment>
+      <div>
+        {datab.map(({ topic, body,id }) => (
+          <div key={id}>
+            <h3>{topic}</h3>
+            <p style={{ width: "250px", textAlign: "center" }}>{body}</p>
+          </div>
+        ))}
       </div>
-    </div>
+    </Fragment>
   );
 };
 

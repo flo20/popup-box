@@ -1,30 +1,38 @@
 import React, { Fragment, useState } from "react";
-import Message from "../Message/Message";
 
 const Form = () => {
   const [input, setInput] = useState({
     heading: "",
     text: "",
-    comments: "",
   });
 
-  const handleFormChange = (e) => {};
+  const handleFormChange = ({ target: inputs }) => {
+    const updates = { ...input };
+    updates[inputs.name] = inputs.value;
+    setInput(updates);
+  };
   return (
     <Fragment>
-      <Message />
       <div>
         Topic:
-        <input type="text" onChange={handleFormChange} />
-        <p>{input.heading}</p>
+        <input
+          type="text"
+          name="heading"
+          value={input.heading}
+          onChange={handleFormChange}
+        />
       </div>
+
       <div>
         Explanation:
-        <input type="text" />
+        <input
+          type="text"
+          name="text"
+          value={input.text}
+          onChange={handleFormChange}
+        />
       </div>
-      <label>Comments:</label>
-      <div>
-        <textarea />
-      </div>
+     
     </Fragment>
   );
 };
